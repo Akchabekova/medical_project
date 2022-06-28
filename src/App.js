@@ -1,5 +1,6 @@
 import './styles/App.css';
 import './styles/style.scss';
+import './index.css'
 import {Routes, Route, useLocation, useNavigate,} from "react-router-dom";
 import Calendar from "./pages/Calendar";
 import Projects from "./pages/Projects";

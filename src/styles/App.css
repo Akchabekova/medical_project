@@ -34,10 +34,11 @@ body{
 .navbar{
     margin-top: 2px;
     padding-top: 3px;
+
 }
 .navbar .active{
     position: relative;
-    background-color: #560b56;
+    background-color: #3f076e;
 }
 .navbar .active:before{
     content: "";
@@ -47,4 +48,14 @@ body{
     width: 5px;
     height: 100%;
     background-color:#c51ec5;
+}
+
+.project-list{
+    display: flex;
+    margin-top: 10px;
+    border-bottom: 1.5px solid #c4c2c2;
+
+
+
+
 }

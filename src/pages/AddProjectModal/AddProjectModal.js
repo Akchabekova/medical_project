@@ -160,16 +160,10 @@ const AddProjectModal = ({setOpenModal, projects, setProjects}) => {
                                     </div>
                                 </div>
                         </form>
-                    </div>
+                   </div>
                 </div>
  )
 };
 
 export default AddProjectModal;
 
-// <div className="project-card">
-//     <div className="project-card-item">
-//         <div className="text-violet-900 bg-white rounded pl-1.5">Медицина</div>
-//         <div className="text-white bg-violet-700 rounded p-1.5">Строится</div>
-//     </div >
-// </div>
