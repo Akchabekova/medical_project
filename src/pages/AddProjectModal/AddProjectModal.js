@@ -35,6 +35,7 @@ const AddProjectModal = ({setOpenModal, projects, setProjects}) => {
                 .required('Обязательные данные'),
         }),
         onSubmit: async ( values ) => {
+            console.log(values)
             const addProject = await axios.post("https://62b34e1e4f851f87f458b306.mockapi.io/projects", values)
             setProjects( [...projects, addProject.data])
             setOpenModal(false)
@@ -47,11 +48,14 @@ const AddProjectModal = ({setOpenModal, projects, setProjects}) => {
                             className="absolute right-9 top-5 cursor-pointer text-red-600 text-2xl "
                             onClick={() => {
                                 setOpenModal(false);
-                            }}
+                     }}
                         >
                             <i className='bx bx-x' />
                         </div>
-                        <form onSubmit={ formik.handleSubmit }>
+                        <form onSubmit={ formik.handleSubmit } >
+                            {
+                                JSON.stringify(formik.errors)
+                            }
                              <div className="bg-white shadow rounded-lg p-6 w-screen ">
                                     <div className="grid lg:grid-cols-2 gap-6">
                                         <div
@@ -62,7 +66,7 @@ const AddProjectModal = ({setOpenModal, projects, setProjects}) => {
                                                 </p>
                                             </div>
                                             <p>
-                                                <input onChange={formik.handleSubmit}
+                                                <input onChange={formik.handleChange}
                                                        id="name"
                                                        name="name"
                                                        type="text"
@@ -79,9 +83,9 @@ const AddProjectModal = ({setOpenModal, projects, setProjects}) => {
                                                 </p>
                                             </div>
                                             <p>
-                                                <input onChange={formik.handleSubmit}
+                                                <input onChange={formik.handleChange}
                                                        name="image"
-                                                       type="image"
+                                                       type="text"
                                                        id="image"
                                                        className="py-1 px-1 outline-none block h-full w-full"
                                                        value={formik.values.image}/>
@@ -95,12 +99,12 @@ const AddProjectModal = ({setOpenModal, projects, setProjects}) => {
                                                 </p>
                                             </div>
                                             <p>
-                                                <input onChange={formik.handleSubmit}
+                                                <input onChange={formik.handleChange}
                                                        name="date_start"
                                                        type="date"
                                                        id="date_start"
                                                        className="py-1 px-1 outline-none block h-full w-full"
-                                                       value={formik.date_start}/>
+                                                       value={formik.values.date_start}/>
                                             </p>
                                         </div>
                                         <div
@@ -111,12 +115,12 @@ const AddProjectModal = ({setOpenModal, projects, setProjects}) => {
                                                 </p>
                                             </div>
                                             <p>
-                                                <input onChange={formik.handleSubmit}
+                                                <input onChange={formik.handleChange}
                                                        name="date_end"
                                                        type="date"
                                                        id="date_end"
                                                        className="py-1 px-1 outline-none block h-full w-full"
-                                                       value={formik.date_end}/>
+                                                       value={formik.values.date_end}/>
                                             </p>
                                         </div>
                                         <div
@@ -127,7 +131,7 @@ const AddProjectModal = ({setOpenModal, projects, setProjects}) => {
                                                 </p>
                                             </div>
                                             <p>
-                                                <input onChange={formik.handleSubmit}
+                                                <input onChange={formik.handleChange}
                                                        name="director"
                                                        type="text"
                                                        id="director"
@@ -143,7 +147,7 @@ const AddProjectModal = ({setOpenModal, projects, setProjects}) => {
                                                 </p>
                                             </div>
                                             <p>
-                                                <input onChange={formik.handleSubmit}
+                                                <input onChange={formik.handleChange}
                                                        name="manager"
                                                        type="text"
                                                        id="manager"
@@ -155,7 +159,7 @@ const AddProjectModal = ({setOpenModal, projects, setProjects}) => {
                                     <div className="border-t mt-6 pt-3">
                                         <button
                                             className="rounded text-gray-100 px-3 py-1 bg-green-600 hover:shadow-inner hover:bg-violet-700 block ml-auto">
-                                            {"Save"}
+                                            Save
                                         </button>
                                     </div>
                                 </div>

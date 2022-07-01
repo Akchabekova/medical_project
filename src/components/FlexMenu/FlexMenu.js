@@ -14,7 +14,7 @@ const [ flexBar, setFlexBar ] = useState(true)
     }
 
   return (
-        <div className="flex ml-auto  ">
+        <div className="flex ml-auto mt-5  ">
             <div  className="text-gray-400 cursor-pointer text-xl mr-2  active:text-purple-800">
                 <button onClick={ () => changeBlock(1)}>
                     <i className='bx bxs-grid' />

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import Layout from "../../components/Layout";
 import axios from "axios";
+import Layout from "../../components/Layout";
 import AddProjectModal from "../AddProjectModal";
 import ProjectCards from "../../components/ProjectCards";
 import FlexMenu from "../../components/FlexMenu";
@@ -12,9 +12,8 @@ const [ projects, setProjects ] = useState([])
 const [ isLoading, setIsLoading ] = useState(true)
 const [ openModal, setOpenModal ] = useState(false)
 
-
-    useEffect(()  => {
-        axios("https://62b34e1e4f851f87f458b306.mockapi.io/projects")
+   useEffect(()  => {
+        axios.get("https://62b34e1e4f851f87f458b306.mockapi.io/projects")
         .then((res) => {
             setProjects(res.data)
             setIsLoading(false)
@@ -38,7 +37,7 @@ return (
                <p className="uppercase ml-8 text-xl mt-8 text-gray-600">Список проектов</p>
                <button onClick={() =>{
                    setOpenModal(true)
-               }} className="text-white p-2 font-semibold bg-fuchsia-500 block ml-auto mt-8 h-1/5">
+               }} className="text-white p-2.5 font-semibold bg-fuchsia-600 block ml-auto mt-7 h-1/5">
                    Добавить проект
                </button>
            </div>
@@ -56,8 +55,23 @@ return (
                />
            }
            <div className="flex">
-               <ProjectCards />
+
+               {
+                   projects.map((item) => (
+                       <div className="project-card bg-white-900 shadow-2xl" key={item.id}>
+                           <div className="project-card-item relative ">
+                               <div className="h-11 w-11 overflow-hidden rounded-full " >
+                                   <img src={item.image}  />
+                               </div>
+                               <div className="text-violet-900 bg-white rounded pl-1 absolute left-2 top-2.5  ">Медицина</div>
+                               <div className="text-white bg-violet-700 rounded p-1 absolute right-2 top-2.5 ">Строится</div>
+                               <div>{item.name}</div>
+                           </div >
+                       </div>
+                    ))
+               }
                <FlexMenu />
+
            </div>
        </Layout>
 
